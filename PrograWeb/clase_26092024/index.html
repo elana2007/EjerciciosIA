@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Sencilla</title>
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="calculator-screen" values="" disabled>
+
+        <div class="calculator-buttons">
+            <button class="button" onclick="clearDisplay()">C</button>
+            <button class="button" onclick="deleteLast()">DEL</button>
+            <button class="button" onclick="apppendToDisplay('/')">/</button>
+            <button class="button" onclick="apppendToDisplay('*')">*</button>
+
+            <button class="button" onclick="apppendToDisplay('7')">7</button>
+            <button class="button" onclick="apppendToDisplay('8')">8</button>
+            <button class="button" onclick="apppendToDisplay('9')">9</button>
+            <button class="button" onclick="apppendToDisplay('-')">-</button>
+
+            <button class="button" onclick="apppendToDisplay('4')">4</button>
+            <button class="button" onclick="apppendToDisplay('5')">5</button>
+            <button class="button" onclick="apppendToDisplay('6')">6</button>
+            <button class="button" onclick="apppendToDisplay('+')">+</button>
+
+            <button class="button" onclick="apppendToDisplay('1')">1</button>
+            <button class="button" onclick="apppendToDisplay('2')">2</button>
+            <button class="button" onclick="apppendToDisplay('3')">3</button>
+            <button class="button equal-button" onclick="calculateResult()">=</button>
+
+            <button class="button" onclick="apppendToDisplay('0')">0</button>
+            <button class="button" onclick="apppendToDisplay('.')">.</button>
+
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
