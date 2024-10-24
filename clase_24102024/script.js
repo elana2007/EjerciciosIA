@@ -12,6 +12,10 @@ console.log(array[3]);
 
 //PRACTICA
 
+
+
+/*
+
 let array = [];
 
 for(i = 0;i <= 10; i++) {
@@ -36,3 +40,27 @@ for(i = 0;i <= 10; i++) {
         break;
     }
 }
+
+*/
+
+//eliminar elmentos de una array
+
+
+/*
+
+let array = ["dato1","dato2","dato3"];
+
+array.push("dato4");
+console.log(array[3]);
+
+//eliminar
+array.splice(1,1);
+console.log(array);
+
+*/
+
+
+
+
+// PRACTICA AÑADIR TAREAS 
+
