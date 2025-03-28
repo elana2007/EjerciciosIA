@@ -5,21 +5,21 @@ from pandastable import Table
 
 class Aplicacion:
     def __init__(self):
-        # Configurar la ventana principal
+        # configuracion de la ventana pincipal
         self.root = tk.Tk()
         self.root.title("Sistema de Consultas Inmobiliarias")
         self.root.geometry("1100x750")
         
-        # Configuración de estilo
+        # config del estilo
         self.setup_styles()
         
-        # Cargar datos
+        #  cargamos los datos
         self.df = self.cargar_datos()
         if self.df is None:
             self.root.destroy()
             return
             
-        # Configurar login
+        # login 
         self.setup_login()
         
         self.root.mainloop()
@@ -38,12 +38,12 @@ class Aplicacion:
         try:
             df = pd.read_csv("Sacramentorealestatetransactions.csv")
             
-            # Limpieza y conversión de datos
+            # se limpian y convierten los datos
             numeric_cols = ['price', 'sq__ft', 'beds', 'baths']
             for col in numeric_cols:
-                # Convertir a numérico, manejar valores faltantes o inválidos
+                # se convierten a numerico y se  manejan valores faltantes o inválidos
                 df[col] = pd.to_numeric(df[col], errors='coerce')
-                # Rellenar NA con 0 para columnas numéricas (excepto precio)
+                # rellenar na con 0 para columnas vacias menos el precio
                 if col != 'price':
                     df[col] = df[col].fillna(0)
             
@@ -95,12 +95,12 @@ class Aplicacion:
             command=self.root.destroy
         ).pack(side=tk.LEFT, padx=5)
         
-        # Centrar el frame de login
+        # centrar frame login
         main_frame.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
     
     def validar_login(self):
         """Validar credenciales de login"""
-        # Credenciales únicas
+        # contraseña y usuario
         usuario_correcto = "sami"
         password_correcto = "sami123"
         
@@ -117,11 +117,11 @@ class Aplicacion:
         """Configura la interfaz de consultas"""
         self.clear_window()
         
-        # Frame principal
+        # frame principal
         main_frame = ttk.Frame(self.root)
         main_frame.pack(fill=tk.BOTH, expand=True, padx=10, pady=10)
         
-        # Frame de controles
+        # frame de controles
         control_frame = ttk.Frame(main_frame)
         control_frame.pack(fill=tk.X, pady=(0, 10))
         
@@ -167,11 +167,11 @@ class Aplicacion:
             command=self.setup_login
         ).pack(side=tk.LEFT, padx=2)
         
-        # Frame de resultados
+        # frame de resultados
         self.result_frame = ttk.Frame(main_frame)
         self.result_frame.pack(fill=tk.BOTH, expand=True)
         
-        # Ejecutar primera consulta automáticamente
+        # ejecutar consulta 1 automaticamente als abrir el programa
         self.ejecutar_consulta()
     
     def ejecutar_consulta(self):
@@ -179,7 +179,7 @@ class Aplicacion:
         if not hasattr(self, 'result_frame'):
             return
             
-        # Limpiar resultados anteriores
+        # limpiar resultados anteriores
         for widget in self.result_frame.winfo_children():
             widget.destroy()
             
@@ -238,7 +238,7 @@ class Aplicacion:
             
         except Exception as e:
             messagebox.showerror("Error", f"Error al ejecutar la consulta:\n{str(e)}")
-            # Mostrar error en la interfaz también
+            #mostrar el error en la interfaz
             error_frame = tk.Frame(self.result_frame)
             error_frame.pack(fill=tk.BOTH, expand=True)
             tk.Label(
@@ -254,7 +254,7 @@ class Aplicacion:
         frame.pack(fill=tk.BOTH, expand=True)
         
         if isinstance(resultado, pd.DataFrame):
-            # Configurar pandastable
+            # configurara pandastable
             pt = Table(
                 frame,
                 dataframe=resultado,
@@ -268,7 +268,7 @@ class Aplicacion:
             )
             pt.show()
             
-            # Ajustar el ancho de las columnas automáticamente
+            # ajuste del ancho de columnas automaticamente
             pt.autoResizeColumns()
         else:
             tk.Label(
